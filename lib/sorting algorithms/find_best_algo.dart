@@ -1,10 +1,10 @@
 
 
-import 'package:dsa/sorting/bubble_sorting.dart';
-import 'package:dsa/sorting/insertion_sorting.dart';
-import 'package:dsa/sorting/merge_sorting.dart';
-import 'package:dsa/sorting/quick_sorting.dart';
-import 'package:dsa/sorting/selection_sorting.dart';
+import 'package:dsa/sorting%20algorithms/bubble_sorting.dart';
+import 'package:dsa/sorting%20algorithms/insertion_sorting.dart';
+import 'package:dsa/sorting%20algorithms/merge_sorting.dart';
+import 'package:dsa/sorting%20algorithms/quick_sorting.dart';
+import 'package:dsa/sorting%20algorithms/selection_sorting.dart';
 
 void findbetterAlgorithm(List<int> arr) {
   

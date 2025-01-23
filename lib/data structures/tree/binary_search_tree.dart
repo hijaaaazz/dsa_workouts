@@ -1,7 +1,12 @@
+import 'dart:collection';
+
 class Node{
   int data;
   Node? right;
   Node? left;
+
+  
+  
 
   Node(this.data);
 }
@@ -9,6 +14,7 @@ class Node{
 class Tree{
 
   Node? root;
+  
 
   insert(x){
     Node? node =root;
@@ -27,12 +33,15 @@ class Tree{
     }else{
       if(node.left == null){
         node.left = Node(x);
+        
         break;
       }else{
         node=node.left;
       }
     }}
   }
+
+
   remove(x){
       _remove(x,root);
   }
@@ -69,16 +78,43 @@ class Tree{
     return node.data;
   }
 
-  display(){
-    _display(0,root);
+   display(){
+    if(root == null) return;
+
+    Queue q =Queue();
+    q.add(root);
+
+    while(q.isNotEmpty){
+      Node current = q.removeFirst();
+      print(current.data);
+      if(current.left != null){
+        q.add(current.left);
+      }
+       if(current.right != null){
+        q.add(current.right);
+      }
+    }
   }
-  _display(int level, Node? node){
-    if(node == null){
-      return ;
+
+}
+
+
+bool isBinarysearchTree(Node? node){
+return _isBSTRec(node, null, null);
+  }
+
+  bool _isBSTRec(Node? node, int? min, int? max) {
+   
+    if (node == null) {
+      return true;
     }
 
-    _display(level+1, node.right);
-    print("${" "* (4*level)} ${node.data}");
-    _display(level+1, node.left);
+    // The current node's value must be between the min and max range
+    if ((min != null && node.data <= min) || (max != null && node.data >= max)) {
+      return false;
+    }
+
+    return _isBSTRec(node.left, min, node.data) && _isBSTRec(node.right, node.data, max);
   }
-}
+
+ 
